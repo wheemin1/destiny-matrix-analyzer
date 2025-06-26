@@ -32,3 +32,22 @@ Thumbs.db
 # Build outputs
 build/
 *.tsbuildinfo
+
+# Runtime files
+.replit
+replit.nix
+
+# Test coverage
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Package lock variations
+yarn.lock
+pnpm-lock.yaml
+
+# Backup files
+*.backup
+*-backup.*

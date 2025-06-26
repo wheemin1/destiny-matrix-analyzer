@@ -1,18 +1,30 @@
 {
-  "name": "rest-express",
+  "name": "destiny-matrix-analyzer",
   "version": "1.0.0",
+  "description": "Destiny Matrix analysis application using 22 Tarot Arcana",
   "type": "module",
   "license": "MIT",
+  "author": "Destiny Matrix Team",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/destiny-matrix-analyzer.git"
+  },
+  "keywords": ["destiny-matrix", "tarot", "numerology", "astrology", "natalia-ladini"],
   "scripts": {
     "dev": "set NODE_ENV=development && tsx server/index.ts",
     "dev:linux": "NODE_ENV=development tsx server/index.ts",
-    "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "build": "npm run check && vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "build:client": "vite build",
+    "build:server": "esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "start": "set NODE_ENV=production && node dist/index.js",
     "start:linux": "NODE_ENV=production node dist/index.js",
-    "check": "tsc",
+    "check": "tsc --noEmit",
     "db:push": "drizzle-kit push",
     "preview": "vite preview",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "test": "echo \"No tests yet\" && exit 0",
+    "clean": "rimraf dist node_modules/.vite",
+    "deploy": "npm run build && npm run start:linux"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
