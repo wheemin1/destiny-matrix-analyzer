@@ -4,18 +4,19 @@ import ModeSelection from "@/components/mode-selection";
 import InputForm from "@/components/input-form";
 import MatrixVisualization from "@/components/matrix-visualization";
 import { Button } from "@/components/ui/button";
+import { type AnalysisResult } from "@/lib/types";
 
 export default function Home() {
   const [currentStep, setCurrentStep] = useState<'selection' | 'input' | 'results'>('selection');
   const [selectedMode, setSelectedMode] = useState<'personal' | 'couple' | null>(null);
-  const [analysisResult, setAnalysisResult] = useState<any>(null);
+  const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null);
 
   const handleModeSelect = (mode: 'personal' | 'couple') => {
     setSelectedMode(mode);
     setCurrentStep('input');
   };
 
-  const handleAnalysisComplete = (result: any) => {
+  const handleAnalysisComplete = (result: AnalysisResult) => {
     setAnalysisResult(result);
     setCurrentStep('results');
   };

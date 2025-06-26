@@ -3,10 +3,13 @@ import { Stars, Share, Download, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import InterpretationTabs from "./interpretation-tabs";
+import MatrixPoint from "./matrix-point";
 import { getTarotCard } from "@/lib/tarot-data";
+import { MATRIX_POINT_CONFIGS, type MatrixPoints } from "@/lib/matrix-config";
+import { type AnalysisResult } from "@/lib/types";
 
 interface MatrixVisualizationProps {
-  result: any;
+  result: AnalysisResult;
   onNewAnalysis: () => void;
 }
 
@@ -71,10 +74,13 @@ export default function MatrixVisualization({ result, onNewAnalysis }: MatrixVis
     );
   }
 
-  const matrixPoints = result.mode === 'couple' ? result.matrixPoints.person1 : result.matrixPoints;
+  const matrixPoints: MatrixPoints = result.mode === 'couple' 
+    ? (result.matrixPoints as any).person1 
+    : result.matrixPoints as MatrixPoints;
+  
   const title = result.mode === 'couple' 
-    ? `${result.person1.name}과 ${result.person2.name}의 데스티니 매트릭스`
-    : `${result.name}의 데스티니 매트릭스`;
+    ? `${result.person1?.name || '첫번째'}과 ${result.person2?.name || '두번째'}의 데스티니 매트릭스`
+    : `${result.name || '나'}의 데스티니 매트릭스`;
 
   return (
     <div className="space-y-8">
@@ -144,180 +150,14 @@ export default function MatrixVisualization({ result, onNewAnalysis }: MatrixVis
               </svg>
               
               {/* Matrix Points with enhanced styling */}
-              {/* Top - Spiritual Purpose */}
-              <div 
-                className="matrix-point absolute w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg cursor-pointer transition-all duration-300 border-2 border-white/40 shadow-xl hover:scale-110"
-                style={{
-                  left: '50%',
-                  top: '12%',
-                  transform: 'translate(-50%, -50%)',
-                  background: 'linear-gradient(135deg, #8B5CF6, #6366F1)',
-                  boxShadow: '0 0 30px rgba(139, 92, 246, 0.4)'
-                }}
-                onClick={() => handlePointClick(matrixPoints.spiritualPurpose)}
-              >
-                {matrixPoints.spiritualPurpose}
-              </div>
-              
-              {/* Right - Talent */}
-              <div 
-                className="matrix-point absolute w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg cursor-pointer transition-all duration-300 border-2 border-white/40 shadow-xl hover:scale-110"
-                style={{
-                  right: '12%',
-                  top: '50%',
-                  transform: 'translate(50%, -50%)',
-                  background: 'linear-gradient(135deg, #10B981, #059669)',
-                  boxShadow: '0 0 30px rgba(16, 185, 129, 0.4)'
-                }}
-                onClick={() => handlePointClick(matrixPoints.talent)}
-              >
-                {matrixPoints.talent}
-              </div>
-              
-              {/* Bottom - Karma */}
-              <div 
-                className="matrix-point absolute w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg cursor-pointer transition-all duration-300 border-2 border-white/40 shadow-xl hover:scale-110"
-                style={{
-                  left: '50%',
-                  bottom: '12%',
-                  transform: 'translate(-50%, 50%)',
-                  background: 'linear-gradient(135deg, #EF4444, #DC2626)',
-                  boxShadow: '0 0 30px rgba(239, 68, 68, 0.4)'
-                }}
-                onClick={() => handlePointClick(matrixPoints.karma)}
-              >
-                {matrixPoints.karma}
-              </div>
-              
-              {/* Left - Behavior */}
-              <div 
-                className="matrix-point absolute w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg cursor-pointer transition-all duration-300 border-2 border-white/40 shadow-xl hover:scale-110"
-                style={{
-                  left: '12%',
-                  top: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  background: 'linear-gradient(135deg, #8B5CF6, #7C3AED)',
-                  boxShadow: '0 0 30px rgba(139, 92, 246, 0.4)'
-                }}
-                onClick={() => handlePointClick(matrixPoints.behavior)}
-              >
-                {matrixPoints.behavior}
-              </div>
-              
-              {/* Center - Core Energy */}
-              <div 
-                className="matrix-point absolute w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-xl cursor-pointer transition-all duration-300 border-3 border-white/50 shadow-2xl hover:scale-110"
-                style={{
-                  left: '50%',
-                  top: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  background: 'linear-gradient(135deg, #F59E0B, #D97706)',
-                  boxShadow: '0 0 40px rgba(245, 158, 11, 0.6)'
-                }}
-                onClick={() => handlePointClick(matrixPoints.coreEnergy)}
-              >
-                {matrixPoints.coreEnergy}
-              </div>
-              
-              {/* Additional inner points */}
-              <div 
-                className="matrix-point absolute w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm cursor-pointer transition-all duration-300 border border-white/30 shadow-lg hover:scale-110"
-                style={{
-                  left: '72%',
-                  top: '28%',
-                  transform: 'translate(-50%, -50%)',
-                  background: 'linear-gradient(135deg, #3B82F6, #2563EB)'
-                }}
-                onClick={() => handlePointClick(matrixPoints.additional1)}
-              >
-                {matrixPoints.additional1}
-              </div>
-              <div 
-                className="matrix-point absolute w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm cursor-pointer transition-all duration-300 border border-white/30 shadow-lg hover:scale-110"
-                style={{
-                  left: '72%',
-                  top: '72%',
-                  transform: 'translate(-50%, -50%)',
-                  background: 'linear-gradient(135deg, #F97316, #EA580C)'
-                }}
-                onClick={() => handlePointClick(matrixPoints.additional2)}
-              >
-                {matrixPoints.additional2}
-              </div>
-              <div 
-                className="matrix-point absolute w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm cursor-pointer transition-all duration-300 border border-white/30 shadow-lg hover:scale-110"
-                style={{
-                  left: '28%',
-                  top: '72%',
-                  transform: 'translate(-50%, -50%)',
-                  background: 'linear-gradient(135deg, #EC4899, #DB2777)'
-                }}
-                onClick={() => handlePointClick(matrixPoints.additional3)}
-              >
-                {matrixPoints.additional3}
-              </div>
-              <div 
-                className="matrix-point absolute w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm cursor-pointer transition-all duration-300 border border-white/30 shadow-lg hover:scale-110"
-                style={{
-                  left: '28%',
-                  top: '28%',
-                  transform: 'translate(-50%, -50%)',
-                  background: 'linear-gradient(135deg, #06B6D4, #0891B2)'
-                }}
-                onClick={() => handlePointClick(matrixPoints.additional4)}
-              >
-                {matrixPoints.additional4}
-              </div>
-              
-              {/* Outer ring points */}
-              <div 
-                className="matrix-point absolute w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-sm cursor-pointer transition-all duration-300 border-2 border-white/30 shadow-lg hover:scale-110"
-                style={{
-                  left: '50%',
-                  top: '2%',
-                  transform: 'translate(-50%, -50%)',
-                  background: 'linear-gradient(135deg, #6366F1, #4F46E5)'
-                }}
-                onClick={() => handlePointClick(matrixPoints.outer1)}
-              >
-                {matrixPoints.outer1}
-              </div>
-              <div 
-                className="matrix-point absolute w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-sm cursor-pointer transition-all duration-300 border-2 border-white/30 shadow-lg hover:scale-110"
-                style={{
-                  right: '2%',
-                  top: '50%',
-                  transform: 'translate(50%, -50%)',
-                  background: 'linear-gradient(135deg, #14B8A6, #0D9488)'
-                }}
-                onClick={() => handlePointClick(matrixPoints.outer2)}
-              >
-                {matrixPoints.outer2}
-              </div>
-              <div 
-                className="matrix-point absolute w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-sm cursor-pointer transition-all duration-300 border-2 border-white/30 shadow-lg hover:scale-110"
-                style={{
-                  left: '50%',
-                  bottom: '2%',
-                  transform: 'translate(-50%, 50%)',
-                  background: 'linear-gradient(135deg, #F59E0B, #D97706)'
-                }}
-                onClick={() => handlePointClick(matrixPoints.outer3)}
-              >
-                {matrixPoints.outer3}
-              </div>
-              <div 
-                className="matrix-point absolute w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-sm cursor-pointer transition-all duration-300 border-2 border-white/30 shadow-lg hover:scale-110"
-                style={{
-                  left: '2%',
-                  top: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  background: 'linear-gradient(135deg, #059669, #047857)'
-                }}
-                onClick={() => handlePointClick(matrixPoints.outer4)}
-              >
-                {matrixPoints.outer4}
-              </div>
+              {MATRIX_POINT_CONFIGS.map((config) => (
+                <MatrixPoint
+                  key={config.key}
+                  config={config}
+                  value={matrixPoints[config.key]}
+                  onClick={handlePointClick}
+                />
+              ))}
             </div>
           </div>
           
