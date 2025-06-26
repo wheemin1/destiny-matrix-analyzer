@@ -6,11 +6,19 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ErrorBoundary } from "@/components/error-boundary";
 import Home from "@/pages/home";
 import NotFound from "@/pages/not-found";
+import MatrixPage from "@/pages/matrix";
+import MatchPage from "@/pages/match";
+import FAQPage from "@/pages/faq";
+import GuidePage from "@/pages/guide";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/matrix" component={MatrixPage} />
+      <Route path="/match" component={MatchPage} />
+      <Route path="/guide" component={GuidePage} />
+      <Route path="/faq" component={FAQPage} />
       <Route component={NotFound} />
     </Switch>
   );

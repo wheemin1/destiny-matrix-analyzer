@@ -1,13 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>운명의 매트릭스(Destiny Matrix) 무료 검사기 • 13포인트 인생 차트</title>
+    <meta name="description" content="생년월일만 입력하면 22 아르카나 기반 13포인트 운명 차트를 무료로 분석합니다. 사랑·재정·카르마 패턴과 10년 주기를 한눈에 확인하세요." />
+    <meta name="keywords" content="운명의 매트릭스, Destiny Matrix, 무료 검사, 22 아르카나, 타로 수비학, 출생 차트, 사랑 라인, 머니 라인" />
+    <link rel="canonical" href="https://destinymatrix.kr/" />
+    
+    <!-- Open Graph / Kakao / Line -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="운명의 매트릭스 무료 검사기" />
+    <meta property="og:url" content="https://destinymatrix.kr/" />
+    <meta property="og:title" content="운명의 매트릭스 무료 검사기 ― 13포인트 Destiny Matrix 차트" />
+    <meta property="og:description" content="22 아르카나로 내 인생 로드맵을 무료로 그려보세요!" />
+    <meta property="og:image" content="https://destinymatrix.kr/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="운명의 매트릭스(Destiny Matrix) 무료 검사" />
+    <meta name="twitter:description" content="생년월일 5초 입력, 13포인트 운명 차트를 바로 확인하세요." />
+    <meta name="twitter:image" content="https://destinymatrix.kr/og-image.jpg" />
+    
+    <!-- Favicon and PWA -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0f172a" />
+    
+    <!-- Disclaimer Banner Style -->
+    <style>
+      .disclaimer-banner {
+        background-color: #f8f9fa;
+        color: #6c757d;
+        text-align: center;
+        padding: 8px;
+        font-size: 0.85rem;
+        border-bottom: 1px solid #e9ecef;
+      }
+    </style>
   </head>
   <body>
+    <!-- Disclaimer Banner -->
+    <div class="disclaimer-banner">
+      본 서비스는 과학적 심리검사가 아닌 자기 성찰·엔터테인먼트 용도입니다.
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
-    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "운명의 매트릭스 무료 검사기",
+        "url": "https://destinymatrix.kr",
+        "inLanguage": "ko-KR",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://destinymatrix.kr/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "운명의 매트릭스 무료 검사기",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://destinymatrix.kr/logo.png"
+          }
+        },
+        "sameAs": [
+          "https://www.instagram.com/destinymatrix_kr",
+          "https://www.youtube.com/@destinymatrix_kr"
+        ]
+      }
+    </script>
   </body>
 </html>

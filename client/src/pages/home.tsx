@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Star, User, Heart, HelpCircle, UserCircle } from "lucide-react";
+import { Helmet } from "react-helmet";
 import ModeSelection from "@/components/mode-selection";
 import InputForm from "@/components/input-form";
 import MatrixVisualization from "@/components/matrix-visualization";
@@ -29,6 +30,13 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>운명의 매트릭스(Destiny Matrix) 무료 검사기 • 13포인트 인생 차트</title>
+        <meta name="description" content="생년월일만 입력하면 22 아르카나 기반 13포인트 운명 차트를 무료로 분석합니다. 사랑·재정·카르마 패턴과 10년 주기를 한눈에 확인하세요." />
+        <meta name="keywords" content="운명의 매트릭스, Destiny Matrix, 무료 검사, 22 아르카나, 타로 수비학, 출생 차트, 사랑 라인, 머니 라인" />
+        <link rel="canonical" href="https://destinymatrix.kr/" />
+      </Helmet>
+      
       {/* Navigation */}
       <nav className="bg-black/20 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,13 +46,16 @@ export default function Home() {
                 <Star className="text-white" size={20} />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-white">데스티니 매트릭스</h1>
-                <p className="text-xs text-white/70">타로로 읽는 인생 로드맵</p>
+                <h1 className="text-xl font-bold text-white">운명의 매트릭스</h1>
+                <p className="text-xs text-white/70">무료 검사기</p>
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="sm" className="text-white/70 hover:text-white">
-                <HelpCircle size={20} />
+              <Button variant="ghost" size="sm" className="text-white/70 hover:text-white" asChild>
+                <a href="/guide">해석 가이드</a>
+              </Button>
+              <Button variant="ghost" size="sm" className="text-white/70 hover:text-white" asChild>
+                <a href="/faq">FAQ</a>
               </Button>
               <Button variant="ghost" size="sm" className="text-white/70 hover:text-white">
                 <UserCircle size={20} />
@@ -72,12 +83,12 @@ export default function Home() {
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            <span className="gradient-text">운명의 매트릭스</span>로<br/>
-            당신의 인생을 읽어보세요
+            <span className="gradient-text">생년월일 5초 입력,</span><br/>
+            운명의 매트릭스 13포인트 차트 무료 완성!
           </h2>
           <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed">
             22개의 타로 아르카나가 만들어내는 신비로운 매트릭스를 통해<br/>
-            당신의 진정한 운명과 숨겨진 재능을 발견하세요
+            당신의 사랑·재정·카르마 패턴과 10년 주기를 한눈에 확인하세요
           </p>
           
           {/* Features */}
@@ -137,15 +148,15 @@ export default function Home() {
               <div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center">
                 <Star className="text-white" size={16} />
               </div>
-              <h3 className="text-lg font-bold text-white">데스티니 매트릭스</h3>
+              <h3 className="text-lg font-bold text-white">운명의 매트릭스 무료 검사기</h3>
             </div>
-            <p className="text-white/60 mb-4">22개의 타로 아르카나로 읽는 당신만의 운명</p>
+            <p className="text-white/60 mb-4">22개의 아르카나 기반 13포인트 무료 운명 차트</p>
             <div className="flex justify-center space-x-6 text-white/40 text-sm">
-              <a href="#" className="hover:text-white transition-colors">개인정보처리방침</a>
-              <a href="#" className="hover:text-white transition-colors">이용약관</a>
-              <a href="#" className="hover:text-white transition-colors">고객지원</a>
+              <a href="/guide" className="hover:text-white transition-colors">해석 가이드</a>
+              <a href="/match" className="hover:text-white transition-colors">궁합 검사</a>
+              <a href="/faq" className="hover:text-white transition-colors">자주 묻는 질문</a>
             </div>
-            <p className="text-white/40 text-xs mt-4">© 2024 Destiny Matrix. Based on Natalia Ladini's system.</p>
+            <p className="text-white/40 text-xs mt-4">© 2024 운명의 매트릭스 무료 검사기. Based on Natalia Ladini's system.</p>
           </div>
         </div>
       </footer>
