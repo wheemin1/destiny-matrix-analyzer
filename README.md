@@ -4,7 +4,7 @@
 
 Based on Natalia Ladini's Destiny Matrix System
 
-[![GitHub stars](https://img.shields.io/github/stars/your-username/destiny-matrix-analyzer.svg?style=social&label=Star)](https://github.com/your-username/destiny-matrix-analyzer)
+[![GitHub stars](https://img.shields.io/github/stars/wheemin1/destiny-matrix-analyzer.svg?style=social&label=Star)](https://github.com/wheemin1/destiny-matrix-analyzer)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/typescript-100%25-blue.svg)](https://www.typescriptlang.org/)
@@ -101,6 +101,50 @@ DestinyMatrixAnalyzer/
 - **코드 스플리팅**: Vite를 통한 자동 번들 최적화
 - **메모리 관리**: 자동 세션 정리 및 캐시 최적화
 - **TypeScript**: 컴파일 타임 오류 방지
+
+## 🚀 Netlify 배포
+
+이 프로젝트는 Netlify에 최적화되어 있으며, 다음과 같이 배포할 수 있습니다:
+
+### Netlify 수동 배포
+
+1. Netlify 계정 생성 및 로그인
+2. "Add new site" > "Import an existing project" 선택
+3. GitHub 저장소 연결
+4. 다음과 같은 배포 설정:
+   - Build command: `npm run build`
+   - Publish directory: `dist/public`
+   - Functions directory: `dist/netlify/functions`
+5. "Advanced" > "New variable"에서 필요한 환경 변수 추가
+6. "Deploy site" 클릭
+
+### Netlify CLI 배포
+
+```bash
+# Netlify CLI 설치
+npm install -g netlify-cli
+
+# Netlify 로그인
+netlify login
+
+# 사이트 초기화 및 설정
+netlify init
+
+# 사이트 배포
+netlify deploy --prod
+```
+
+### 환경 변수
+
+Netlify 대시보드에서 다음 환경 변수 설정:
+
+- `NODE_ENV`: `production`
+- 필요한 경우 추가 환경 변수 설정
+
+### 배포 확인
+
+- 서버리스 함수: `https://your-site-name.netlify.app/.netlify/functions/server`
+- API 엔드포인트: `https://your-site-name.netlify.app/api/analyze`
 
 ## 🛡️ 보안 및 안정성
 

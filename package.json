@@ -7,7 +7,7 @@
   "author": "Destiny Matrix Team",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/destiny-matrix-analyzer.git"
+    "url": "https://github.com/wheemin1/destiny-matrix-analyzer.git"
   },
   "keywords": [
     "destiny-matrix",
@@ -19,12 +19,12 @@
   "scripts": {
     "dev": "set NODE_ENV=development && tsx server/index.ts",
     "dev:linux": "NODE_ENV=development tsx server/index.ts",
-    "build": "npm run check && vite build && npm run build:netlify",
+    "build": "npm run check && npm run build:client && npm run build:netlify",
     "build:client": "vite build",
-    "build:server": "esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
-    "build:netlify": "npm run build:client && cp netlify/functions/server.js dist/",
-    "start": "set NODE_ENV=production && node dist/index.js",
-    "start:linux": "NODE_ENV=production node dist/index.js",
+    "build:server": "esbuild server/index.ts server/routes.ts server/storage.ts server/vite.ts shared/schema.ts client/src/lib/destiny-matrix.ts --platform=node --packages=external --bundle --outdir=dist/server --format=esm --out-extension:.js=.js",
+    "build:netlify": "esbuild netlify/functions/server.js server/storage.ts shared/schema.ts client/src/lib/destiny-matrix.ts --platform=node --packages=external --bundle --outdir=dist/netlify/functions --format=esm --out-extension:.js=.js",
+    "start": "set NODE_ENV=production && node dist/server/index.js",
+    "start:linux": "NODE_ENV=production node dist/server/index.js",
     "check": "tsc --noEmit",
     "db:push": "drizzle-kit push",
     "preview": "vite preview",
