@@ -12,6 +12,16 @@ vite.config.ts.*
 .env.test.local
 .env.production.local
 
+# Build artifacts
+build/
+dist/
+out/
+
+# Cache directories
+.cache/
+.parcel-cache/
+.vite/
+
 # Logs
 npm-debug.log*
 yarn-debug.log*

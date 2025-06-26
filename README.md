@@ -4,6 +4,11 @@
 
 Based on Natalia Ladini's Destiny Matrix System
 
+[![GitHub stars](https://img.shields.io/github/stars/your-username/destiny-matrix-analyzer.svg?style=social&label=Star)](https://github.com/your-username/destiny-matrix-analyzer)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Node.js](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org/)
+[![TypeScript](https://img.shields.io/badge/typescript-100%25-blue.svg)](https://www.typescriptlang.org/)
+
 ## ✨ 주요 기능
 
 - 🔮 **개인 분석**: 나만의 매트릭스로 성격, 재능, 인생 목적을 깊이 있게 분석
